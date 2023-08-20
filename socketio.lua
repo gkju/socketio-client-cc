@@ -46,7 +46,7 @@ function Socket:initSocketIo (namespace)
 end
 
 function Socket:handleSocketIo (message, callback)
-    if not socketIoActive then
+    if not self.socketIoActive then
         print("How did we get here?")
         self:initSocketIo()
     end
@@ -68,7 +68,7 @@ function Socket:handleSocketIo (message, callback)
 end
 
 function Socket:emit (event, data, namespace)
-    if not socketIoActive then
+    if not self.socketIoActive then
         print("Should've initialized socket.io")
         self:initSocketIo()
     end
@@ -97,17 +97,4 @@ function Socket:handleMessage (message, callback)
     end
 end
 
-socket = Socket:new("ws://raspi.local:81")
-local namespace = "krakow-sensory"
-socket:initSocketIo(namespace)
-socket:emit("listen-sensor", "tempC", namespace)
-while true do
-    local message = socket.websocket.receive()
-    if message then
-        socket:handleMessage(message, function (data, namespace)
-            print("Received data from " .. namespace)
-            print(data[1])
-            print(data[2])
-        end)
-    end
-end
+return Socket
