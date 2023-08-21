@@ -76,14 +76,14 @@ local function addSensor(topic, name, unit, color, no, cnt)
         :setBackground(sensor.color)
 
     local paneWidth = "parent.w - 7"
-    local viewPaneHeight = "parent.h - 7"
+    local viewPaneHeight = "parent.h - 11"
     local paneX = 4
     local paneY = 3
 
-    frame:addPane()
-        :setPosition(2, 2)
-        :setSize("{" .. paneWidth .. " + 2}", "{" .. viewPaneHeight .. " + 2}")
-        :setBackground(colors.grey)
+    --frame:addPane()
+    --    :setPosition(3, 2)
+    --    :setSize("{" .. paneWidth .. " + 2}", "{" .. viewPaneHeight .. " + 4}")
+    --    :setBackground(colors.white)
 
     frame:addPane()
         :setPosition(paneX, paneY)
